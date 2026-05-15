@@ -13,14 +13,25 @@ SECRET_KEY = 'django-insecure-itc=s69m7d--%^%_x#x(9z1(uuxnjpu(#qncz*@4cvw1i0q=bn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 LOGIN_REDIRECT_URL='dashboard'
+
 LOGIN_URL='login'
+
 LOGOUT_URL='logout'
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 MEDIA_URL = 'media/'
+
 MEDIA_ROOT = BASE_DIR / 'media'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -31,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 ]
 
 MIDDLEWARE = [
